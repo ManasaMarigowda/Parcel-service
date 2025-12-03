@@ -1,10 +1,12 @@
 pipeline {
     agent any
+	stages {
     stage('Checkout') {
             steps {
                  sh "rm -rf Parcel-service"
 				 sh "git clone https://github.com/ManasaMarigowda/Parcel-service"
         } 
+	}
 	}
     stages {
         stage('Install Java 17') {
