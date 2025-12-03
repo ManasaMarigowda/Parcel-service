@@ -5,6 +5,7 @@ pipeline {
                  sh "rm -rf Parcel-service"
 				 sh "git clone https://github.com/ManasaMarigowda/Parcel-service"
         } 
+	}
     stages {
         stage('Install Java 17') {
             steps {
@@ -43,7 +44,5 @@ pipeline {
             }
         }
     }
-}
-
 
 }
