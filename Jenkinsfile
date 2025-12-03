@@ -1,4 +1,4 @@
-ipeline {
+peline {
     agent any
     stage('Checkout') {
             steps {
