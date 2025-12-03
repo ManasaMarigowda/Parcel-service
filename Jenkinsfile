@@ -21,8 +21,8 @@ environment {
 		  sh "cp /home/ubuntu/Parcel-service/target/*.jar ${env.ARTIFACT}-f2.jar"
 			
          
-          archiveArtifacts artifacts: "${env.ARTIFACT}-f1", fingerprint: true
-			archiveArtifacts artifacts: "${env.ARTIFACT}-f2", fingerprint: true
+          archiveArtifacts artifacts: "${env.ARTIFACT}-f1.jar", fingerprint: true
+			archiveArtifacts artifacts: "${env.ARTIFACT}-f2.jar", fingerprint: true
         }
       }
     }
