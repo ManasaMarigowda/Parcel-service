@@ -7,9 +7,9 @@ pipeline {
 				 sh "git clone https://github.com/ManasaMarigowda/Parcel-service"
         } 
 	}
-	}
-    stages {
-        stage('Install Java 17') {
+	        
+		
+	stage('Install Java 17') {
             steps {
                 sh '''
                     if ! java -version &>/dev/null; then
@@ -23,10 +23,8 @@ pipeline {
                 '''
             }
         }
-    }
-
-    stages {
-        stage('Set JAVA_HOME') {
+    
+       stage('Set JAVA_HOME') {
             steps {
                 script {
                     sh '''
@@ -45,6 +43,6 @@ pipeline {
                 }
             }
         }
-    }
-
+	}
+}
 }
