@@ -25,7 +25,9 @@ environment {
           def branchSafe = env.BRANCH_NAME.replaceAll('[^a-zA-Z0-9_.-]', '_')
 
           env.ARTIFACT = "Parcel-service-${env.BUILD_NUMBER}-${sha}.jar"
-
+          sh "cp /home/ubuntu/Parcel-service/target/*.jar ${env.ARTIFACT}-f1.jar"
+		  sh "cp /home/ubuntu/Parcel-service/target/*.jar ${env.ARTIFACT}-f2.jar"
+			
          
           archiveArtifacts artifacts: "${env.ARTIFACT}", fingerprint: true
         }
