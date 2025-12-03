@@ -34,7 +34,7 @@ pipeline {
                             echo "JAVA_HOME=$JAVA_HOME_PATH" | sudo tee -a /etc/environment
                             echo "export JAVA_HOME=$JAVA_HOME_PATH" | sudo tee -a /etc/profile
                             echo 'export PATH=$JAVA_HOME/bin:$PATH' | sudo tee -a /etc/profile
-                            source /etc/profile
+                           
                             echo "JAVA_HOME set to $JAVA_HOME_PATH"
                         else
                             echo "JAVA_HOME is already set."
