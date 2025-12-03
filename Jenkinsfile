@@ -1,13 +1,15 @@
 pipeline {
-    agent any
+    agent { label 'slave1' }
+	stages {
     stage('Checkout') {
             steps {
                  sh "rm -rf Parcel-service"
 				 sh "git clone https://github.com/ManasaMarigowda/Parcel-service"
         } 
 	}
-    stages {
-        stage('Install Java 17') {
+	        
+		
+	stage('Install Java 17') {
             steps {
                 sh '''
                     if ! java -version &>/dev/null; then
@@ -21,10 +23,8 @@ pipeline {
                 '''
             }
         }
-    }
-
-    stages {
-        stage('Set JAVA_HOME') {
+    
+       stage('Set JAVA_HOME') {
             steps {
                 script {
                     sh '''
@@ -43,6 +43,23 @@ pipeline {
                 }
             }
         }
-    }
 
+		stage('Install Maven') {
+            steps {
+                script {
+                    sh '''
+					if ! mvn -version &>/dev/null; then
+                     echo "Installing Maven..."
+                     sudo apt install -y maven
+                    else
+                      echo "Maven is already installed:"
+                   mvn -version
+fi
+echo "Environment setup completed. You can now build and run the application manually."
+  '''
+}
+}
+}
+	
+}
 }
