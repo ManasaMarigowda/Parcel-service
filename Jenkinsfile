@@ -1,19 +1,11 @@
 pipeline {
+	 agent { label 'slave1' }
 environment {
     JFROG_URL = 'https://trialcxid14.jfrog.io/artifactory'
     REPO_NAME = 'parcel-libs-snapshot'      // JFrog repo for feature branches
 	 
   }
-    agent { label 'slave1' }
-    stages {
-        stage('Checkout') {
-            steps {
-                sh "rm -rf Parcel-service"
-				 sh "git clone https://github.com/ManasaMarigowda/Parcel-service"
-            }
-        } 
- 
-
+    
        stage('Create Versioned Artifact') {
       steps {
         script {
@@ -24,7 +16,7 @@ environment {
 
           def branchSafe = env.BRANCH_NAME.replaceAll('[^a-zA-Z0-9_.-]', '_')
 
-          env.ARTIFACT = "Parcel-service-${env.BUILD_NUMBER}-${sha}.jar"
+          env.ARTIFACT = "Parcel-service-${branchSafe}-${env.BUILD_NUMBER}"
           sh "cp /home/ubuntu/Parcel-service/target/*.jar ${env.ARTIFACT}-f1.jar"
 		  sh "cp /home/ubuntu/Parcel-service/target/*.jar ${env.ARTIFACT}-f2.jar"
 			
