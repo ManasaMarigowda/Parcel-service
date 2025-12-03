@@ -29,7 +29,8 @@ environment {
 		  sh "cp /home/ubuntu/Parcel-service/target/*.jar ${env.ARTIFACT}-f2.jar"
 			
          
-          archiveArtifacts artifacts: "${env.ARTIFACT}", fingerprint: true
+          archiveArtifacts artifacts: "${env.ARTIFACT}-f1", fingerprint: true
+			archiveArtifacts artifacts: "${env.ARTIFACT}-f2", fingerprint: true
         }
       }
     }
@@ -39,8 +40,13 @@ environment {
         withCredentials([string(credentialsId: 'jfrogkey', variable: 'JFROG_API_KEY')]) {
           sh """
             curl -f -H "X-JFrog-Art-Api: ${JFROG_API_KEY}" \
-                -T "${env.ARTIFACT}" \
-                "${JFROG_URL}/${REPO_NAME}/${env.BRANCH_NAME}/${env.ARTIFACT}"
+                -T "${env.ARTIFACT}-f1.jar" \
+                "${JFROG_URL}/${REPO_NAME}/${env.BRANCH_NAME}/${env.ARTIFACT}-f1.jar"
+          """
+			 sh """
+            curl -f -H "X-JFrog-Art-Api: ${JFROG_API_KEY}" \
+                -T "${env.ARTIFACT}-f2.jar" \
+                "${JFROG_URL}/${REPO_NAME}/${env.BRANCH_NAME}/${env.ARTIFACT}-f2.jar"
           """
         }
       }
