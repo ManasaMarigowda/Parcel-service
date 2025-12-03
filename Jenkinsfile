@@ -5,8 +5,7 @@ environment {
     REPO_NAME = 'parcel-libs-snapshot'      // JFrog repo for feature branches
 	 
   }
-    
-       stage('Create Versioned Artifact') {
+     stage('Create Versioned Artifact') {
       steps {
         script {
           def sha = sh(
@@ -43,6 +42,8 @@ environment {
         }
       }
     }
+}
+}
        
 
    
