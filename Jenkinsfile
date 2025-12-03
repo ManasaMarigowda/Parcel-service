@@ -43,6 +43,23 @@ pipeline {
                 }
             }
         }
+
+		stage('Install Maven') {
+            steps {
+                script {
+                    sh '''
+					if ! mvn -version &>/dev/null; then
+                     echo "Installing Maven..."
+                     sudo apt install -y maven
+                    else
+                      echo "Maven is already installed:"
+                   mvn -version
+fi
+echo "Environment setup completed. You can now build and run the application manually."
+  '''
+}
+}
+}
 	
 }
 }
