@@ -35,6 +35,7 @@ else
     echo "Maven is already installed:"
     mvn -version
 fi
+
 echo "Environment setup completed. You can now build and run the application manually."
 Build the project manually
 mvn clean install
@@ -115,6 +116,5 @@ jobs:
       run: |
         echo "Stopping the app gracefully..."
         mvn spring-boot:stop
-        
 
 
