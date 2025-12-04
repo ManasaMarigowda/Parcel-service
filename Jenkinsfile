@@ -60,7 +60,7 @@ echo "Environment setup completed. You can now build and run the application man
 }
 }
 }
-	  // stage('Build and RUN') {
+ // stage('Build and RUN') {
      //       steps {
            //     	sh "mvn clean install"
 		//			sh "mvn spring-boot:run"

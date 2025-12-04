@@ -1,12 +1,10 @@
-===========================================================================================================================================================================
-============================================================================================================================================================================
 Shell script to setup the environment.
 
 #!/bin/bash
 set -e
 echo "Starting Maven project setup..."
 
-# Step 1: Install Java 11
+# Step 1: Install Java 17
 if ! java -version &>/dev/null; then
     echo "Installing Java 17..."
     sudo apt update
@@ -39,7 +37,6 @@ else
 fi
 
 echo "Environment setup completed. You can now build and run the application manually."
-==============================================================================================================================================================================
 Build the project manually
 mvn clean install
 
@@ -47,7 +44,6 @@ Run the application manually
 mvn spring-boot:run
 OR
 java -jar target/simple-parcel-service-app-1.0-SNAPSHOT.jar
-==============================================================================================================================================================================
 
 name: Build, Deploy, and Run
 
@@ -120,6 +116,5 @@ jobs:
       run: |
         echo "Stopping the app gracefully..."
         mvn spring-boot:stop
-============================================================================================================================================================================
 
 
